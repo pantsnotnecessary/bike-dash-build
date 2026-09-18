@@ -122,6 +122,44 @@ Rules for the six video jumpers:
 - Keep each pair's two wires twisted together or taped side by side.
 - Do not run them next to the 12 V wires.
 
+## Step 4b. GPS (speed source)
+
+The P4-NANO has no dedicated GPS header; any two free header GPIOs become a UART. The config uses **GPIO24 = P4 TX, GPIO25 = P4 RX** (change the `gps_tx_pin` / `gps_rx_pin` substitutions if those are taken on the silkscreen).
+
+Four wires. TX goes to RX and RX goes to TX; that is the one everybody gets backwards.
+
+| GPS pin (SparkFun NEO-M9N) | Goes to | Wire |
+|---|---|---|
+| **3V3** | P4-NANO header **3V3**. **Not 5V: this board is 3.3 V only and 5 V will kill it.** | red |
+| GND | P4-NANO header **GND** | black |
+| TX (GPS talks) | P4-NANO header **GPIO25** (P4 RX) | green |
+| RX (GPS listens) | P4-NANO header **GPIO24** (P4 TX) | white |
+
+(If the Matek M9N-5883 was bought instead: its 5V pin goes to the header **5V**, and its RX/TX pins wire the same way. Its UART is 3.3 V logic too.)
+
+No level shifting needed either way. Keep the antenna (the square ceramic patch) facing the sky with nothing metal on top of it; on the bike that means the top of the enclosure, not under the panel.
+
+### One-time GPS setup (do this on the PC before wiring it to the P4)
+
+Factory default is 1 update per second at 9600 baud, which makes a laggy speedo. We want 10 per second at 115200.
+
+1. Connect the GPS to the USB-TTL adapter with the adapter's switch on **3.3 V**: 3V3-3V3, GND-GND, GPS TX to adapter RX, GPS RX to adapter TX. (If the SparkFun board's USB-C port shows up as a COM port on the PC, use that instead and skip the adapter.)
+2. Install u-blox **u-center** (free, Windows). Connect at 9600 (Matek: 38400).
+3. View > Messages View > UBX > CFG > RATE: set Measurement Period **100 ms**, click Send.
+4. UBX > CFG > PRT: UART1, baud **115200**, Send. Reconnect u-center at 115200.
+5. UBX > CFG > CFG: tick "Save current configuration", all devices (BBR + Flash if offered), Send.
+6. Power-cycle the module and reconnect at 115200. If it is still at 10 Hz / 115200, done. If it forgot, the module has no flash or battery for settings: uncomment the `on_boot` block in the YAML, which re-sends the same settings every time the dash powers up.
+
+The three UBX command strings the `on_boot` block sends (widely used values, verify against u-center's "Send" hex dump if in doubt):
+
+| Purpose | Bytes |
+|---|---|
+| 10 Hz (CFG-RATE 100 ms) | `B5 62 06 08 06 00 64 00 01 00 01 00 7A 12` |
+| 115200 baud (CFG-PRT UART1) | `B5 62 06 00 14 00 01 00 00 00 D0 08 00 00 00 C2 01 00 07 00 03 00 00 00 00 00 C0 7E` |
+| Save (CFG-CFG) | `B5 62 06 09 0D 00 00 00 00 00 FF FF 00 00 00 00 00 00 17 31 BF` |
+
+Test: with the dash running, the log prints satellites, speed and course from the `gps:` component. Outdoors it needs 30-90 s for a first fix; indoors near a window maybe, in a basement never.
+
 ## Step 5. Power-on order and first test
 
 1. Meter check, power off: panel pin 2 to any GND must **not** be a short. Panel pin 39 to pin 31 must not be a short.

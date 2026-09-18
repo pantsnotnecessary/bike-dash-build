@@ -10,3 +10,5 @@
 - Amazon cart built (P4-NANO, 40P + 22P breakouts, PT4115 x3, Pololu). $71.15. Panel to be ordered from DigiKey.
 - Rejected: Pi/CM5 (boot time), STM32H7 (no BLE), Amazon "1000 nit" HDMI kits (no HDMI on P4).
 - Open items: which of GPIO37/38 on the P4-NANO DSI connector is LCD reset; PT4115 sense resistor value on the modules that arrive; 22-pin FFC cable orientation.
+- Caught later the same day: the GPS (speed source) had been left out of this repo. Added to the BOM (SparkFun NEO-M9N chip-antenna breakout, $74.95 Prime, 3.3 V, backup battery; Matek M9N-5883 as the fallback; plus a USB-TTL adapter for the one-time 10 Hz / 115200 setup), wiring.md Step 4b, and `uart:` + `gps:` blocks in the YAML on GPIO24/25. Not ordered yet.
+- Local repo moved to `C:\Users\anon\Nextcloud\server\bike-dash-build` (Nextcloud-synced).

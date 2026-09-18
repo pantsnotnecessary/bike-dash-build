@@ -6,6 +6,8 @@ substitutions:
   name: bike-dash
   lcd_reset_pin: GPIO27
   backlight_pwm_pin: GPIO26
+  gps_tx_pin: GPIO24   # P4 TX -> GPS RX. Any free header GPIO; check the silkscreen
+  gps_rx_pin: GPIO25   # P4 RX <- GPS TX
 
 esphome:
   name: ${name}
@@ -51,6 +53,62 @@ i2c:
   sda: GPIO7
   scl: GPIO8
   frequency: 400kHz
+
+# GPS: u-blox M8/M10 on a UART. Module must be set to 10 Hz / 115200 (docs/wiring.md Step 4b).
+uart:
+  - id: gps_uart
+    tx_pin: ${gps_tx_pin}
+    rx_pin: ${gps_rx_pin}
+    baud_rate: 115200
+    rx_buffer_size: 2048
+
+gps:
+  uart_id: gps_uart
+  latitude:
+    name: GPS Latitude
+  longitude:
+    name: GPS Longitude
+  altitude:
+    name: GPS Altitude
+  satellites:
+    name: GPS Satellites
+  course:
+    name: GPS Course
+  speed:
+    name: GPS Speed
+    id: gps_speed_kmh
+    # ESPHome reports km/h; the dash wants mph
+    on_value:
+      then:
+        - sensor.template.publish:
+            id: speed_mph
+            state: !lambda 'return x * 0.621371;'
+
+sensor:
+  - platform: template
+    id: speed_mph
+    name: Speed
+    unit_of_measurement: mph
+    accuracy_decimals: 0
+
+time:
+  - platform: gps
+    id: gps_time
+
+# If the GPS module forgets its 10 Hz / 115200 setting on power loss (no flash / no battery),
+# move this on_boot block under the existing `esphome:` key at the top so the dash re-sends it
+# at every boot. The module boots at 9600 in that case, so the first two writes go out at 9600,
+# then the UART is switched to 115200.
+#   on_boot:
+#     priority: -100
+#     then:
+#       - lambda: |-
+#           id(gps_uart).set_baud_rate(9600); id(gps_uart).load_settings();
+#       - uart.write: {id: gps_uart, data: [0xB5,0x62,0x06,0x08,0x06,0x00,0x64,0x00,0x01,0x00,0x01,0x00,0x7A,0x12]}
+#       - uart.write: {id: gps_uart, data: [0xB5,0x62,0x06,0x00,0x14,0x00,0x01,0x00,0x00,0x00,0xD0,0x08,0x00,0x00,0x00,0xC2,0x01,0x00,0x07,0x00,0x03,0x00,0x00,0x00,0x00,0x00,0xC0,0x7E]}
+#       - delay: 200ms
+#       - lambda: |-
+#           id(gps_uart).set_baud_rate(115200); id(gps_uart).load_settings();
 
 # Backlight: LEDC PWM into the PT4115 DIM pin. About 5 kHz so it is not visible.
 output:

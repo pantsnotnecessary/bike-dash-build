@@ -12,8 +12,12 @@ Ordered 2026-09-18 unless noted. Prices are what was on screen that day.
 | 4 | MECCANIXITY 22-pin 0.5 mm FPC breakout, 2-pack (P4-NANO DSI side) | Amazon | $9.39 | [B09VPKWL1G](https://www.amazon.com/MECCANIXITY-Converter-2-54mm-Single-Printer/dp/B09VPKWL1G) | in cart |
 | 5 | PT4115 constant-current LED driver module, 3-pack (backlight) | Amazon | $7.99 | [B0FR1SGWKM](https://www.amazon.com/PT4115-Constant-Current-Dimming-Step-Down/dp/B0FR1SGWKM) | in cart |
 | 6 | Pololu D36V28F5 5 V 3.2 A buck, 5.3-50 V in (bike 12 V to 5 V) | Amazon | $16.99 | [B0BJKVWR2D](https://www.amazon.com/Pololu-3-2A-Step-Down-Voltage-Regulator/dp/B0BJKVWR2D) | in cart |
+| 7 | **SparkFun GPS Breakout NEO-M9N, chip antenna (Qwiic)**: genuine u-blox M9, 25 Hz max, UART pins + I2C, **3.3 V supply and logic**, rechargeable backup battery keeps settings and gives a hot fix | Amazon | $74.95 | [B082YG1PXF](https://www.amazon.com/SparkFun-Breakout-Breadboardable-time-First-f/dp/B082YG1PXF) (Prime) | **not yet ordered** |
+| 8 | USB-to-TTL serial adapter, 3.3 V (for the one-time 10 Hz / 115200 setup in u-center) | Amazon | about $8 | any CP2102 or FT232 board with a 3.3 V switch | not yet ordered |
 
-Amazon subtotal $71.15. Panel separate.
+Amazon subtotal $71.15 before the GPS. Panel separate.
+
+GPS notes: it is the speed source for the dash (speed and trip come from GPS, not the bike). Many cheap "NEO-M8N" boards on Amazon are clones with old firmware, so the SparkFun board is the pick. Alternative if it is out of stock: [Matek M9N-5883](https://www.amazon.com/s?k=Matek+M9N-5883) ($62.99, genuine, but **5 V supply**, JST-GH pigtail, and no flash: it forgets its settings when its supercap drains, so the `on_boot` block in the YAML becomes mandatory). Whatever module: it must run at **10 Hz** and **115200 baud** (factory default is 1 Hz at 9600 or 38400, too slow for a speedo). See wiring.md Step 4b.
 
 ## Still to source (bench)
 
