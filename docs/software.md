@@ -19,7 +19,7 @@ The dash application lives in [bike-dash](https://github.com/pantsnotnecessary/b
 | 2 | LVGL hello at 1024x600 | a label renders, no tearing, PSRAM frame buffer |
 | 3 | Merge bike-dash UI | the speed-hero layout from bike-dash renders here |
 | 4 | BMS BLE over the C6 | `'soc': Sending state NN %` in the log (same GO/NO-GO as bike-dash Stage 1) |
-| 5 | GPS, SD logging, media | per the bike-dash plan |
+| 5 | GPS, SD logging, phone media | iPhone only. Apple Media Service (AMS) over BLE: **play/pause, volume up/down** are the required controls; next/previous and track title come free with it. Custom ESPHome component (esp-idf). Fallback if AMS fights us: a BLE HID consumer-control device (media keys), which iOS also accepts natively but gives no track info. No Android support needed. |
 | 6 | Touch (optional) | ILI2132A is **not** an ESPHome touchscreen platform and would need a custom component. The dash does not need touch to be useful, so this is last |
 
 ## The display block
