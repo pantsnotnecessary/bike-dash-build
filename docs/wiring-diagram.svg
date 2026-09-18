@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" role="img" aria-label="Bench wiring: 12 V supply feeds a Pololu 5 V buck and a PT4115 LED driver; the P4-NANO gets 5 V, drives the panel over a 22-pin FFC to a 22-pin breakout, six MIPI jumpers to a 40-pin breakout, and the Riverdi panel tail; RESET, 3.3 V and STBYB from the P4-NANO header; backlight LED+/LED- from the PT4115; GPS on 3.3 V and GPIO24/25.">
+  <defs>
+    <g id="gnd" stroke="#222" stroke-width="2" fill="none">
+      <line x1="0" y1="0" x2="0" y2="8"/>
+      <line x1="-9" y1="8" x2="9" y2="8"/>
+      <line x1="-6" y1="12" x2="6" y2="12"/>
+      <line x1="-3" y1="16" x2="3" y2="16"/>
+    </g>
+  </defs>
+  <rect x="0" y="0" width="1400" height="900" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222">
+
+  <text x="700" y="28" font-size="18" font-weight="bold" text-anchor="middle">bike-dash bench wiring: P4-NANO + Riverdi 7" panel + GPS</text>
+
+  <!-- ===== 12 V supply ===== -->
+  <rect x="60" y="50" width="160" height="90" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="140" y="74" font-size="14" font-weight="bold" text-anchor="middle">12 V supply</text>
+  <text x="140" y="94" font-size="11" text-anchor="middle">bench: 12 V 2 A adapter</text>
+  <text x="140" y="110" font-size="11" text-anchor="middle">bike: fused ignition 12 V</text>
+  <text x="66" y="84" font-size="12">+</text>
+  <text x="66" y="130" font-size="12">−</text>
+  <line x1="60" y1="126" x2="45" y2="126" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="45" y="126"/>
+
+  <!-- ===== Pololu ===== -->
+  <rect x="60" y="200" width="160" height="120" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="140" y="222" font-size="14" font-weight="bold" text-anchor="middle">Pololu D36V28F5</text>
+  <text x="140" y="240" font-size="11" text-anchor="middle">12 V in → 5 V 3.2 A out</text>
+  <text x="66" y="254">VIN</text>
+  <text x="66" y="284">GND</text>
+  <line x1="60" y1="280" x2="45" y2="280" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="45" y="280"/>
+  <text x="214" y="254" text-anchor="end">VOUT 5 V</text>
+  <text x="140" y="305" font-size="10" text-anchor="middle" fill="#555">EN pin: tie to ignition later</text>
+
+  <!-- ===== PT4115 ===== -->
+  <rect x="60" y="380" width="160" height="180" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="140" y="402" font-size="14" font-weight="bold" text-anchor="middle">PT4115 LED driver</text>
+  <text x="140" y="420" font-size="11" text-anchor="middle">constant current, PWM dim</text>
+  <text x="140" y="436" font-size="11" text-anchor="middle" fill="#b00">check Rs = 0.33–0.39 Ω FIRST</text>
+  <text x="66" y="454">IN+</text>
+  <text x="66" y="484">IN−</text>
+  <line x1="60" y1="480" x2="45" y2="480" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="45" y="480"/>
+  <text x="214" y="474" text-anchor="end">DIM / PWM</text>
+  <text x="214" y="514" text-anchor="end">LED+</text>
+  <text x="214" y="544" text-anchor="end">LED−</text>
+
+  <!-- 12 V+ bus -->
+  <g stroke="#d62728" stroke-width="2.5" fill="none">
+    <line x1="30" y1="80" x2="30" y2="450"/>
+    <line x1="30" y1="80" x2="60" y2="80"/>
+    <line x1="30" y1="250" x2="60" y2="250"/>
+    <line x1="30" y1="450" x2="60" y2="450"/>
+  </g>
+  <circle cx="30" cy="250" r="4" fill="#d62728"/>
+  <text x="34" y="170" font-size="11" fill="#d62728" transform="rotate(-90 34 170)" text-anchor="middle">12 V +</text>
+
+  <!-- 5 V to NANO -->
+  <line x1="220" y1="250" x2="430" y2="250" stroke="#ff7f0e" stroke-width="2.5"/>
+  <text x="325" y="244" font-size="11" fill="#c8600a" text-anchor="middle">5 V</text>
+
+  <!-- DIM to GPIO26 -->
+  <polyline points="220,470 380,470 380,300 430,300" fill="none" stroke="#1f77b4" stroke-width="2.5"/>
+  <text x="300" y="464" font-size="11" fill="#1f77b4" text-anchor="middle">PWM dim</text>
+
+  <!-- LED+ / LED- to 40P breakout, routed under everything -->
+  <polyline points="220,510 360,510 360,840 1000,840 1000,600 1040,600" fill="none" stroke="#e6550d" stroke-width="2.5"/>
+  <polyline points="220,540 340,540 340,860 1010,860 1010,560 1040,560" fill="none" stroke="#444" stroke-width="2.5" stroke-dasharray="8 4"/>
+  <text x="680" y="834" font-size="11" fill="#e6550d" text-anchor="middle">LED+  (backlight, 9.6 V / 270 mA, from PT4115)</text>
+  <text x="680" y="876" font-size="11" fill="#444" text-anchor="middle">LED−  (backlight return to PT4115, NOT to ground)</text>
+
+  <!-- ===== P4-NANO ===== -->
+  <rect x="430" y="140" width="280" height="480" rx="8" fill="#eef3fb" stroke="#222" stroke-width="1.5"/>
+  <text x="570" y="165" font-size="14" font-weight="bold" text-anchor="middle">Waveshare ESP32-P4-NANO</text>
+  <text x="570" y="182" font-size="11" text-anchor="middle" fill="#555">header pin names as printed on the board</text>
+  <text x="436" y="254">5V</text>
+  <text x="436" y="304">GPIO26</text>
+  <text x="704" y="209" text-anchor="end">GPIO27</text>
+  <text x="704" y="244" text-anchor="end">3V3</text>
+  <text x="704" y="284" text-anchor="end">GND</text>
+  <line x1="710" y1="280" x2="725" y2="280" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="725" y="280"/>
+  <rect x="682" y="400" width="28" height="100" fill="#d9e2f3" stroke="#222"/>
+  <text x="696" y="450" font-size="10" text-anchor="middle" transform="rotate(-90 696 450)">DSI 22-pin</text>
+  <text x="480" y="612" font-size="11" text-anchor="middle">3V3</text>
+  <text x="590" y="612" font-size="11" text-anchor="middle">GPIO25 (RX)</text>
+  <text x="660" y="612" font-size="11" text-anchor="middle">GPIO24 (TX)</text>
+  <text x="570" y="380" font-size="11" text-anchor="middle" fill="#555">C6 radio on GPIO14–19, 54 (internal)</text>
+  <text x="570" y="396" font-size="11" text-anchor="middle" fill="#555">I2C GPIO7/8 (touch, later)</text>
+
+  <!-- GPIO27 -> RESET, 3V3 -> VDD + STBYB -->
+  <line x1="710" y1="205" x2="1040" y2="205" stroke="#b8860b" stroke-width="2.5"/>
+  <text x="875" y="199" font-size="11" fill="#8a6508" text-anchor="middle">RESET</text>
+  <polyline points="710,240 1040,240" fill="none" stroke="#d63384" stroke-width="2.5"/>
+  <polyline points="1000,240 1000,275 1040,275" fill="none" stroke="#d63384" stroke-width="2.5"/>
+  <circle cx="1000" cy="240" r="4" fill="#d63384"/>
+  <text x="875" y="234" font-size="11" fill="#d63384" text-anchor="middle">3.3 V</text>
+
+  <!-- 22-pin FFC band -->
+  <line x1="710" y1="470" x2="830" y2="470" stroke="#9a9a9a" stroke-width="14"/>
+  <text x="770" y="456" font-size="11" text-anchor="middle">22-pin FFC cable</text>
+  <text x="770" y="492" font-size="10" text-anchor="middle" fill="#b00">pin order: confirm from schematic</text>
+
+  <!-- ===== 22P breakout ===== -->
+  <rect x="830" y="380" width="120" height="180" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="890" y="400" font-size="13" font-weight="bold" text-anchor="middle">22P breakout</text>
+  <text x="890" y="414" font-size="10" text-anchor="middle" fill="#555">(pins 1–10 expected)</text>
+  <text x="944" y="429" text-anchor="end" font-size="11">2  D0−</text>
+  <text x="944" y="449" text-anchor="end" font-size="11">3  D0+</text>
+  <text x="944" y="474" text-anchor="end" font-size="11">5  D1−</text>
+  <text x="944" y="494" text-anchor="end" font-size="11">6  D1+</text>
+  <text x="944" y="519" text-anchor="end" font-size="11">8  CLK−</text>
+  <text x="944" y="539" text-anchor="end" font-size="11">9  CLK+</text>
+  <text x="890" y="555" font-size="10" text-anchor="middle" fill="#555">1,4,7,10 = GND</text>
+
+  <!-- MIPI pairs 22P -> 40P -->
+  <g fill="none" stroke-width="2.5">
+    <polyline points="950,425 985,425 985,350 1040,350" stroke="#6f42c1"/>
+    <polyline points="950,445 995,445 995,375 1040,375" stroke="#6f42c1"/>
+    <polyline points="950,470 1005,470 1005,410 1040,410" stroke="#9467bd"/>
+    <polyline points="950,490 1015,490 1015,435 1040,435" stroke="#9467bd"/>
+    <polyline points="950,515 1025,515 1025,470 1040,470" stroke="#5b3a8e"/>
+    <polyline points="950,535 1032,535 1032,495 1040,495" stroke="#5b3a8e"/>
+  </g>
+  <text x="990" y="335" font-size="10" fill="#6f42c1" text-anchor="middle">6 MIPI jumpers: same length, ≤100 mm, pairs together</text>
+
+  <!-- ===== 40P breakout ===== -->
+  <rect x="1040" y="120" width="150" height="660" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="1115" y="142" font-size="13" font-weight="bold" text-anchor="middle">40P breakout</text>
+  <text x="1115" y="157" font-size="10" text-anchor="middle" fill="#555">numbers = panel pin</text>
+  <text x="1046" y="209" font-size="11">5  RESET</text>
+  <text x="1046" y="244" font-size="11">2, 3  VDD 3.3 V</text>
+  <text x="1046" y="279" font-size="11">6  STBYB (to 3.3 V)</text>
+  <text x="1046" y="314" font-size="11">7,10,13,16,19  GND</text>
+  <line x1="1040" y1="310" x2="1025" y2="310" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="1025" y="310"/>
+  <text x="1046" y="354" font-size="11">8  D0N</text>
+  <text x="1046" y="379" font-size="11">9  D0P</text>
+  <text x="1046" y="414" font-size="11">11  D1N</text>
+  <text x="1046" y="439" font-size="11">12  D1P</text>
+  <text x="1046" y="474" font-size="11">17  DCLKN</text>
+  <text x="1046" y="499" font-size="11">18  DCLKP</text>
+  <text x="1046" y="564" font-size="11">31, 32  LED−</text>
+  <text x="1046" y="604" font-size="11">39, 40  LED+</text>
+  <text x="1046" y="650" font-size="10" fill="#555">14,15,20,21 (lanes 2–3):</text>
+  <text x="1046" y="664" font-size="10" fill="#555">leave open</text>
+  <text x="1046" y="690" font-size="10" fill="#555">1,4,33–38 NC: leave open</text>
+  <text x="1046" y="716" font-size="10" fill="#555">22–30: per datasheet</text>
+  <text x="1046" y="730" font-size="10" fill="#555">(GND / scan direction)</text>
+
+  <!-- panel tail band + panel -->
+  <line x1="1190" y1="450" x2="1230" y2="450" stroke="#9a9a9a" stroke-width="14"/>
+  <text x="1210" y="436" font-size="10" text-anchor="middle">tail</text>
+  <rect x="1230" y="120" width="140" height="660" rx="6" fill="#e8f5e9" stroke="#222" stroke-width="1.5"/>
+  <text x="1300" y="145" font-size="13" font-weight="bold" text-anchor="middle">Riverdi panel</text>
+  <text x="1300" y="162" font-size="10" text-anchor="middle">RVT70HSMNWC00-B</text>
+  <text x="1300" y="178" font-size="10" text-anchor="middle">7" 1024×600, 850 nit</text>
+  <text x="1300" y="450" font-size="10" text-anchor="middle" fill="#555">40-pin FPC tail,</text>
+  <text x="1300" y="464" font-size="10" text-anchor="middle" fill="#555">contacts one side:</text>
+  <text x="1300" y="478" font-size="10" text-anchor="middle" fill="#555">flip if no picture</text>
+
+  <!-- ===== GPS ===== -->
+  <rect x="430" y="700" width="280" height="110" rx="6" fill="#f4f4f4" stroke="#222" stroke-width="1.5"/>
+  <text x="570" y="740" font-size="14" font-weight="bold" text-anchor="middle">SparkFun NEO-M9N GPS</text>
+  <text x="570" y="758" font-size="11" text-anchor="middle" fill="#b00">3.3 V only. Never 5 V.</text>
+  <text x="570" y="774" font-size="10" text-anchor="middle" fill="#555">set once to 10 Hz / 115200 in u-center</text>
+  <text x="480" y="714" font-size="11" text-anchor="middle">3V3</text>
+  <text x="590" y="714" font-size="11" text-anchor="middle">TX</text>
+  <text x="660" y="714" font-size="11" text-anchor="middle">RX</text>
+  <text x="530" y="796" font-size="11" text-anchor="middle">GND</text>
+  <line x1="530" y1="810" x2="530" y2="812" stroke="#222" stroke-width="2"/>
+  <use href="#gnd" x="530" y="810"/>
+  <line x1="480" y1="620" x2="480" y2="700" stroke="#d63384" stroke-width="2.5"/>
+  <line x1="590" y1="620" x2="590" y2="700" stroke="#2ca02c" stroke-width="2.5"/>
+  <line x1="660" y1="620" x2="660" y2="700" stroke="#17becf" stroke-width="2.5"/>
+  <text x="722" y="664" font-size="11" fill="#2ca02c">GPS TX → P4 RX (GPIO25)</text>
+  <text x="722" y="680" font-size="11" fill="#17becf">GPS RX ← P4 TX (GPIO24)</text>
+
+  <!-- ===== Legend ===== -->
+  <rect x="40" y="620" width="290" height="230" rx="6" fill="#fff" stroke="#222" stroke-width="1"/>
+  <text x="52" y="640" font-size="12" font-weight="bold">Legend</text>
+  <line x1="52" y1="656" x2="92" y2="656" stroke="#d62728" stroke-width="2.5"/><text x="100" y="660">12 V</text>
+  <line x1="52" y1="676" x2="92" y2="676" stroke="#ff7f0e" stroke-width="2.5"/><text x="100" y="680">5 V</text>
+  <line x1="52" y1="696" x2="92" y2="696" stroke="#d63384" stroke-width="2.5"/><text x="100" y="700">3.3 V</text>
+  <line x1="52" y1="716" x2="92" y2="716" stroke="#b8860b" stroke-width="2.5"/><text x="100" y="720">RESET (GPIO27)</text>
+  <line x1="52" y1="736" x2="92" y2="736" stroke="#1f77b4" stroke-width="2.5"/><text x="100" y="740">backlight dim PWM (GPIO26)</text>
+  <line x1="52" y1="756" x2="92" y2="756" stroke="#e6550d" stroke-width="2.5"/><text x="100" y="760">LED+ backlight</text>
+  <line x1="52" y1="776" x2="92" y2="776" stroke="#444" stroke-width="2.5" stroke-dasharray="8 4"/><text x="100" y="780">LED− backlight return</text>
+  <line x1="52" y1="796" x2="92" y2="796" stroke="#6f42c1" stroke-width="2.5"/><text x="100" y="800">MIPI pairs (D0, D1, CLK)</text>
+  <line x1="52" y1="816" x2="92" y2="816" stroke="#2ca02c" stroke-width="2.5"/><text x="100" y="820">GPS UART</text>
+  <circle cx="60" cy="836" r="4" fill="#222"/><text x="72" y="840">= joined.</text>
+  <use href="#gnd" x="150" y="828"/><text x="164" y="840">= common ground: all join together</text>
+  <text x="52" y="866" font-size="10" fill="#555">Lines that cross without a dot are not connected.</text>
+  </g>
+</svg>

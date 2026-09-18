@@ -4,6 +4,10 @@ Written for someone who is not a wiring person. Every connection is listed pin b
 
 ## What you are building
 
+![Bench wiring diagram: every wire, colour-coded, with pin numbers at both ends](wiring-diagram.svg)
+
+Same thing as text, for when the picture is too small on a phone:
+
 ```
                  +---------------------+          +--------------------------+
  12 V supply --->| Pololu D36V28F5     |--5 V---->| Waveshare ESP32-P4-NANO  |
