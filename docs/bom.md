@@ -37,6 +37,12 @@ GPS notes: it is the speed source for the dash (speed and trip come from GPS, no
 | Enclosure + bezel for the 164.9 x 100 x 5.7 mm panel | Weatherproof, vibration |
 | Automotive fuse (2 A) + inline connector on the 12 V feed | |
 
+## Contingency (buy only if Stage 4 fails)
+
+| Part | Why | Notes |
+|---|---|---|
+| Seeed XIAO ESP32-C6 (about $10, Amazon/Seeed) | Second BLE radio if the onboard C6 cannot hold the BMS link and the iPhone AMS link at once | Runs its own ESPHome firmware as the AMS peripheral; talks to the P4 over a spare UART (3V3, GND, TX, RX on two free header GPIOs). Onboard C6 keeps the BMS. Has a u.FL socket for an external antenna if the enclosure blocks BLE. |
+
 ## Alternatives that were rejected (so we do not re-research)
 
 | Part | Why not |
