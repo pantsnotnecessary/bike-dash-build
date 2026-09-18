@@ -35,4 +35,4 @@ Cost is not a factor. Performance and start-up time are.
 
 ## Status
 
-- 2026-09-18: research done, parts ordered (Amazon cart plus the Riverdi panel from DigiKey). Nothing built yet.
+- 2026-09-18: research done, all core parts ordered (Amazon plus the Riverdi panel from DigiKey). Nothing built yet.

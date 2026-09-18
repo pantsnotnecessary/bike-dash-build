@@ -6,16 +6,16 @@ Ordered 2026-09-18 unless noted. Prices are what was on screen that day.
 
 | # | Part | Vendor | Price | Link | Status |
 |---|---|---|---|---|---|
-| 1 | Riverdi RVT70HSMNWC00-B, 7" 1024x600 IPS 850 cd/m2 optical-bonded PCAP touch, MIPI-DSI, no frame | DigiKey (SM-RVT70HSMNWC00-B V1.0A) | $116.07 | [DigiKey](https://www.digikey.com/en/products/detail/riverdi/SM-RVT70HSMNWC00-B-V1-0A/25855280) / [Riverdi direct $113.52](https://riverdi.com/product/high-brightness-ips-display-rvt70hsmnwc00-b-7-inch-projected-capacitive-touch-panel-optical-bonding-uxtouch-mipi-dsi) | to order (DigiKey had 10 in stock; 5-week lead if not) |
-| 2 | Waveshare ESP32-P4-NANO (bare board) | Amazon | $28.79 | [search, first result](https://www.amazon.com/s?k=Waveshare+ESP32-P4-NANO) | in cart |
-| 3 | MECCANIXITY 40-pin 0.5 mm FPC breakout, 2-pack (panel side) | Amazon | $7.99 | [B09VPHW2QY](https://www.amazon.com/MECCANIXITY-Converter-Socket-2-54mm-Printer/dp/B09VPHW2QY) | in cart |
-| 4 | MECCANIXITY 22-pin 0.5 mm FPC breakout, 2-pack (P4-NANO DSI side) | Amazon | $9.39 | [B09VPKWL1G](https://www.amazon.com/MECCANIXITY-Converter-2-54mm-Single-Printer/dp/B09VPKWL1G) | in cart |
-| 5 | PT4115 constant-current LED driver module, 3-pack (backlight) | Amazon | $7.99 | [B0FR1SGWKM](https://www.amazon.com/PT4115-Constant-Current-Dimming-Step-Down/dp/B0FR1SGWKM) | in cart |
-| 6 | Pololu D36V28F5 5 V 3.2 A buck, 5.3-50 V in (bike 12 V to 5 V) | Amazon | $16.99 | [B0BJKVWR2D](https://www.amazon.com/Pololu-3-2A-Step-Down-Voltage-Regulator/dp/B0BJKVWR2D) | in cart |
-| 7 | **SparkFun GPS Breakout NEO-M9N, chip antenna (Qwiic)**: genuine u-blox M9, 25 Hz max, UART pins + I2C, **3.3 V supply and logic**, rechargeable backup battery keeps settings and gives a hot fix | Amazon | $74.95 | [B082YG1PXF](https://www.amazon.com/SparkFun-Breakout-Breadboardable-time-First-f/dp/B082YG1PXF) (Prime) | **not yet ordered** |
-| 8 | USB-to-TTL serial adapter, 3.3 V (for the one-time 10 Hz / 115200 setup in u-center) | Amazon | about $8 | any CP2102 or FT232 board with a 3.3 V switch | not yet ordered |
+| 1 | Riverdi RVT70HSMNWC00-B, 7" 1024x600 IPS 850 cd/m2 optical-bonded PCAP touch, MIPI-DSI, no frame | DigiKey (SM-RVT70HSMNWC00-B V1.0A) | $116.07 | [DigiKey](https://www.digikey.com/en/products/detail/riverdi/SM-RVT70HSMNWC00-B-V1-0A/25855280) / [Riverdi direct $113.52](https://riverdi.com/product/high-brightness-ips-display-rvt70hsmnwc00-b-7-inch-projected-capacitive-touch-panel-optical-bonding-uxtouch-mipi-dsi) | ordered 2026-09-18 |
+| 2 | Waveshare ESP32-P4-NANO (bare board) | Amazon | $28.79 | [search, first result](https://www.amazon.com/s?k=Waveshare+ESP32-P4-NANO) | ordered 2026-09-18 |
+| 3 | MECCANIXITY 40-pin 0.5 mm FPC breakout, 2-pack (panel side) | Amazon | $7.99 | [B09VPHW2QY](https://www.amazon.com/MECCANIXITY-Converter-Socket-2-54mm-Printer/dp/B09VPHW2QY) | ordered 2026-09-18 |
+| 4 | MECCANIXITY 22-pin 0.5 mm FPC breakout, 2-pack (P4-NANO DSI side) | Amazon | $9.39 | [B09VPKWL1G](https://www.amazon.com/MECCANIXITY-Converter-2-54mm-Single-Printer/dp/B09VPKWL1G) | ordered 2026-09-18 |
+| 5 | PT4115 constant-current LED driver module, 3-pack (backlight) | Amazon | $7.99 | [B0FR1SGWKM](https://www.amazon.com/PT4115-Constant-Current-Dimming-Step-Down/dp/B0FR1SGWKM) | ordered 2026-09-18 |
+| 6 | Pololu D36V28F5 5 V 3.2 A buck, 5.3-50 V in (bike 12 V to 5 V) | Amazon | $16.99 | [B0BJKVWR2D](https://www.amazon.com/Pololu-3-2A-Step-Down-Voltage-Regulator/dp/B0BJKVWR2D) | ordered 2026-09-18 |
+| 7 | **SparkFun GPS Breakout NEO-M9N, chip antenna (Qwiic)**: genuine u-blox M9, 25 Hz max, UART pins + I2C, **3.3 V supply and logic**, rechargeable backup battery keeps settings and gives a hot fix | Amazon | $74.95 | [B082YG1PXF](https://www.amazon.com/SparkFun-Breakout-Breadboardable-time-First-f/dp/B082YG1PXF) (Prime) | ordered 2026-09-18 |
+| 8 | USB-to-TTL serial adapter, 3.3 V (for the one-time 10 Hz / 115200 setup in u-center) | Amazon | about $8 | any CP2102 or FT232 board with a 3.3 V switch | ordered 2026-09-18 |
 
-Amazon subtotal $71.15 before the GPS. Panel separate.
+All eight core parts ordered 2026-09-18 (Amazon plus the panel from DigiKey).
 
 GPS notes: it is the speed source for the dash (speed and trip come from GPS, not the bike). Many cheap "NEO-M8N" boards on Amazon are clones with old firmware, so the SparkFun board is the pick. Alternative if it is out of stock: [Matek M9N-5883](https://www.amazon.com/s?k=Matek+M9N-5883) ($62.99, genuine, but **5 V supply**, JST-GH pigtail, and no flash: it forgets its settings when its supercap drains, so the `on_boot` block in the YAML becomes mandatory). Whatever module: it must run at **10 Hz** and **115200 baud** (factory default is 1 Hz at 9600 or 38400, too slow for a speedo). See wiring.md Step 4b.
 
