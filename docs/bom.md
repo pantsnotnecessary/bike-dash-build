@@ -36,7 +36,6 @@ GPS notes: it is the speed source for the dash (speed and trip come from GPS, no
 | Carrier PCB (22-pin DSI in, 40-pin panel out, PT4115, buck, connectors) | Replaces the two breakouts and jumper wires. Design after bench bring-up. |
 | Enclosure + bezel for the 164.9 x 100 x 5.7 mm panel | Weatherproof, vibration |
 | Automotive fuse (2 A) + inline connector on the 12 V feed | |
-| GPS module | Same as the bike-dash plan (UART, any free P4 GPIO) |
 
 ## Alternatives that were rejected (so we do not re-research)
 
