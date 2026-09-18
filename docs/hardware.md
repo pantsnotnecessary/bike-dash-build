@@ -109,3 +109,14 @@ Wiki: https://www.waveshare.com/wiki/ESP32-P4-Nano-StartPage . Schematic: https:
 ## On-bike carrier PCB (later)
 
 Replace both breakouts and the jumpers with one board: 22-pin FPC in, 40-pin FPC out, DSI pairs as 100 ohm differential traces, PT4115 + Pololu footprints (or discrete equivalents), fuse, ignition-sense input. Design it only after the bench build shows the panel initialising.
+
+## Antennas
+
+None to buy for the bench. All radios have on-board antennas; the rules for the bike install:
+
+| Radio | Rule |
+|---|---|
+| BLE, C6 on the P4-NANO (PCB antenna) | Plastic enclosure. Keep the NANO away from the panel's driver strip and the MIPI wires; the e-paper gauge showed display electronics desensing the radio. |
+| GPS, SparkFun chip antenna | Must see sky: top of the enclosure, plastic lid, nothing metal above it. If first fix is slow or speed drops out, swap to the SparkFun NEO-M9N u.FL version plus a small active patch antenna (about $12) mounted outside. |
+| XIAO C6 (contingency) | Same as BLE; it has a u.FL socket if an external antenna is ever needed. |
+| Metal enclosure | Do not. Everything would need external antennas. |
