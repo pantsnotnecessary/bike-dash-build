@@ -38,7 +38,15 @@ Full pin-by-pin steps, checks and troubleshooting: [docs/wiring.md](docs/wiring.
 | [docs/software.md](docs/software.md) | ESPHome bring-up plan, versions, stages |
 | [esphome/bike-dash-p4nano.yaml](esphome/bike-dash-p4nano.yaml) | Starting config: P4-NANO + Riverdi panel as a `mipi_dsi` CUSTOM model |
 | [docs/build-log.md](docs/build-log.md) | Dated log of what was done and what was learned |
+| [enclosure/](enclosure/README.md) | OpenSCAD model, STLs and previews of the printed housing (bezel, retainer, shell, GPS cap) |
+
+## Enclosure at a glance
+
+![Enclosure mockup](enclosure/previews/front.png)
+
+Four printed parts, PETG/ASA, M3 inserts. Details, hardware list and the VERIFY table: [enclosure/README.md](enclosure/README.md).
 
 ## Status
 
 - 2026-09-18: research done, all core parts ordered (Amazon plus the Riverdi panel from DigiKey). Nothing built yet.
+- 2026-09-18: enclosure mockup modelled in OpenSCAD, STLs exported. Several dimensions still need calipers on the real parts (see enclosure/README.md).
