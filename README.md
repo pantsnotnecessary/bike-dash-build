@@ -22,6 +22,12 @@ Cost is not a factor. Performance and start-up time are.
 | Board | **Waveshare ESP32-P4-NANO** (P4 + onboard C6, 32 MB PSRAM, 16 MB flash, microSD, 22-pin 2-lane DSI). |
 | Glue | Two FPC breakouts for the bench, a PT4115 constant-current driver for the 9.6 V / 270 mA backlight, a Pololu 5 V buck off the bike's 12 V. A small carrier PCB replaces the breakouts for the on-bike install. |
 
+## Bench wiring at a glance
+
+![Bench wiring diagram](docs/wiring-diagram.svg)
+
+Full pin-by-pin steps, checks and troubleshooting: [docs/wiring.md](docs/wiring.md).
+
 ## Where things are
 
 | File | Contents |
